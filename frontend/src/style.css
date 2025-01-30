@@ -140,13 +140,10 @@ body {
   display: none;
 }
 
-.task-details .status{
-  padding: .3rem .8rem;
-  border: 1px solid black;
-  border-radius: 22px;
-  font-size: .8rem;
+/* .task-details .status{
+
   
-}
+} */
 /* ------------------------------------------------- */
 
 .tasks-add{
@@ -225,12 +222,10 @@ height: 12rem;
 
 .status, .delete-button {
   cursor: pointer;
-  font-weight: bold;
-  color: green;
-  padding: 0.5rem 1rem;
-  border: 1px solid green;
-  border-radius: 4px;
-  transition: background 0.3s;
+  padding: .3rem .8rem;
+  border: 1px solid black;
+  border-radius: 22px;
+  font-size: .8rem;
 }
 /* ------------------------------------------------- */
 

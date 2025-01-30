@@ -30,8 +30,6 @@ drawerTrigger.addEventListener('click', function () {
 });
 
 
-const colors = ['#97c8eb', '#f3d180', '#f4978e', '#98c9a3'];
-
 
 // Add new task
 
@@ -144,3 +142,9 @@ async function deleteTask(id) {
 // Event Listeners
 newTask.addEventListener('click', addTask);
 document.addEventListener('DOMContentLoaded', fetchTasks);
+const colors = ['#97c8eb', '#f3d180', '#f4978e', '#98c9a3'];
+
+allTasks.forEach((div, index) => {
+    const color = colors[index % colors.length]; // Use modulus to loop through colors
+    div.style.backgroundColor = color;
+});
