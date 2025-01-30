@@ -1,5 +1,5 @@
 
-const API_URL = 'https://your-backend.onrender.com/api/tasks';
+const API_URL = 'https://todo-app-37wo.onrender.com/api/tasks';
 const tasksContainer = document.querySelector('.tasks');
 const newTask = document.querySelector('.new-task');
 const getTask = document.querySelector('.get-task');
