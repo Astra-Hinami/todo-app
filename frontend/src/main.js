@@ -46,8 +46,12 @@ async function fetchTasks() {
         taskDiv.dataset.id = task._id;
 
 
-        const color = colors[index % colors.length]; // Cycle through colors
-        taskDiv.style.backgroundColor = color;
+        tasks.forEach((task, index) => {  // Added 'index' as the second argument
+            const color = colors[index % colors.length];  // Use 'index' for color cycling
+            taskDiv.style.backgroundColor = color;
+        });
+
+
 
         // Task Title
         const taskTitle = document.createElement('h1');
