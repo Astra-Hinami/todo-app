@@ -46,10 +46,37 @@ async function fetchTasks() {
         taskDiv.className = 'task';
         taskDiv.dataset.id = task._id;
 
+        // Task Title
         const taskTitle = document.createElement('h1');
         taskTitle.className = 'task-title';
         taskTitle.textContent = task.title;
 
+        // Task Details Container
+        const taskDetails = document.createElement('div');
+        taskDetails.className = 'task-details';
+
+        // Priority and Due Date Container
+        const taskInfo = document.createElement('div');
+        taskInfo.className = 'one';
+
+        const taskPriority = document.createElement('div');
+        taskPriority.className = 'priority';
+        taskPriority.textContent = task.priority || 'MEDIUM'; // Default priority
+
+        const taskDue = document.createElement('div');
+        taskDue.className = 'due';
+        taskDue.textContent = task.due || 'No Due Date'; // Default due date
+
+        taskInfo.appendChild(taskPriority);
+        taskInfo.appendChild(taskDue);
+
+        // Task Actions Container
+        const taskActions = document.createElement('div');
+        taskActions.className = 'actions';
+        taskActions.style.display = 'flex';
+        taskActions.style.gap = '1rem';
+
+        // Task Status
         const taskStatus = document.createElement('div');
         taskStatus.className = 'status';
         taskStatus.textContent = task.status;
@@ -58,19 +85,33 @@ async function fetchTasks() {
             fetchTasks(); // Refresh tasks
         });
 
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = '❌';
+        // Delete Button
+        const deleteBtn = document.createElement('div');
+        deleteBtn.className = 'delete-button';
+        deleteBtn.textContent = 'DELETE';
+        deleteBtn.style.cursor = 'pointer';
         deleteBtn.addEventListener('click', async function () {
             await deleteTask(task._id);
             fetchTasks(); // Refresh tasks
         });
 
+        // Append Status and Delete Button to Actions
+        taskActions.appendChild(taskStatus);
+        taskActions.appendChild(deleteBtn);
+
+        // Append elements to taskDetails
+        taskDetails.appendChild(taskInfo);
+        taskDetails.appendChild(taskActions);
+
+        // Append elements to taskDiv
         taskDiv.appendChild(taskTitle);
-        taskDiv.appendChild(taskStatus);
-        taskDiv.appendChild(deleteBtn);
+        taskDiv.appendChild(taskDetails);
+
+        // Append taskDiv to tasksContainer
         tasksContainer.appendChild(taskDiv);
     });
 }
+
 
 async function addTask() {
     const title = getTask.value.trim();
@@ -83,6 +124,8 @@ async function addTask() {
     });
 
     getTask.value = '';
+    tasksDrawer.style.bottom = '-12rem'; 
+
     fetchTasks(); // Refresh tasks
 }
 async function updateTaskStatus(id, status) {

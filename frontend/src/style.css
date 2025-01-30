@@ -217,6 +217,21 @@ height: 12rem;
   color: #fff;
 
 }
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.status, .delete-button {
+  cursor: pointer;
+  font-weight: bold;
+  color: green;
+  padding: 0.5rem 1rem;
+  border: 1px solid green;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
 /* ------------------------------------------------- */
 
 /* ------------------------------------------------- */
