@@ -8,6 +8,7 @@ let allTasks = document.querySelectorAll('.task');
 let newTask = document.querySelector('.new-task');
 let getTask = document.querySelector('.get-task');
 let tasksContainer = document.querySelector('.tasks');
+const colors = ['#97c8eb', '#f3d180', '#f4978e', '#98c9a3'];
 
 
 let isOpen = true; 
@@ -43,6 +44,10 @@ async function fetchTasks() {
         const taskDiv = document.createElement('div');
         taskDiv.className = 'task';
         taskDiv.dataset.id = task._id;
+
+
+        const color = colors[index % colors.length]; // Cycle through colors
+        taskDiv.style.backgroundColor = color;
 
         // Task Title
         const taskTitle = document.createElement('h1');
@@ -142,9 +147,4 @@ async function deleteTask(id) {
 // Event Listeners
 newTask.addEventListener('click', addTask);
 document.addEventListener('DOMContentLoaded', fetchTasks);
-const colors = ['#97c8eb', '#f3d180', '#f4978e', '#98c9a3'];
 
-allTasks.forEach((div, index) => {
-    const color = colors[index % colors.length]; // Use modulus to loop through colors
-    div.style.backgroundColor = color;
-});
